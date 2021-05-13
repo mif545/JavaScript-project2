@@ -1,0 +1,82 @@
+
+<head>
+    <link href="c.css" rel="stylesheet"></script>
+</head>
+<body >
+
+</body>
+<script type="module">
+    import {Animal} from './Animal.js'
+    import {Dog} from './Dog.js'
+    import {Panda} from './Panda.js'
+    import {Bird} from './Bird.js'
+    import {Stork} from './Stork.js'
+    import {Rabbit} from './Rabbit.js'
+    import {Parrot} from './Parrot.js'
+
+    var button = document.createElement("button");
+    button.appendChild(document.createTextNode("Reset Me!"));
+    document.body.appendChild(button);
+
+   button.addEventListener("click", function(){
+    localStorage.setItem('visitCount', 0);
+   })
+    
+    var visits = Number(localStorage.getItem('visitCount'));
+    var current = Boolean(sessionStorage.getItem('session'));
+  
+    if (!current) {
+      visits++;
+    }
+  
+    localStorage.setItem('visitCount', visits);
+    sessionStorage.setItem('session', true);
+    document.body.style.backgroundColor="orange";
+  
+    console.log(visits);
+    if(visits==1)
+    {
+        alert("ברוך הבא למשחק מקוים שתהנה");
+       
+    }
+    else{
+        alert("שלום וברכה גלשת באתרנו"+" "+visits+" "+"פעמים");
+        if(visits==5)
+        {
+            let c=["blue","green","red","pink"];
+            var r=Math.floor(Math.random()*3)+1;
+            document.body.style.background=c[r];
+        }
+        
+    }
+
+   
+ 
+    
+       
+      
+     
+    var array=[new Dog("dog"),new Dog("dog"),new Panda("Panda"),new Panda("Panda"),new Bird("Bird"),
+    new Bird("Bird"),new Stork("Stork"),new Stork("Stork"),new Rabbit("Rabbit"),new Rabbit("Rabbit"),new Parrot("Parrot"),new Parrot("Parrot")];
+    for (let index = 0; index <100; index++) {
+        var x=Math.floor(Math.random()*11)+1;
+        var y=Math.floor(Math.random()*11)+1;
+        console.log(x)
+        console.log(y)
+        var save=array[x];
+        array[x]=array[y];
+        array[y]=save; 
+        
+     }
+   console.log(array)
+    for(let index=0;index<array.length;index++){
+        array[index].draw();
+       // array[index].choose(array[index]);
+    }
+  
+   
+
+      
+     
+    //  a.choose();
+</script>
